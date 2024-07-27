@@ -4,7 +4,9 @@ const connectDB = require("./src/configs/connectDB");
 require("dotenv").config();
 
 const authRouter = require("./src/routers/authRouter");
+const userRouter = require("./src/routers/userRouter");
 const errorMiddleHandle = require("./src/middlewares/errorMiddleware");
+const verifyToken = require("./src/middlewares/verifyMiddleware");
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRouter);
+app.use("/user",verifyToken,userRouter);
 app.use(errorMiddleHandle);
 
 connectDB();
