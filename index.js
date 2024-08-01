@@ -7,6 +7,7 @@ const authRouter = require("./src/routers/authRouter");
 const userRouter = require("./src/routers/userRouter");
 const errorMiddleHandle = require("./src/middlewares/errorMiddleware");
 const verifyToken = require("./src/middlewares/verifyMiddleware");
+const { eventRouter } = require("./src/routers/eventRouter");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use("/auth", authRouter);
 app.use("/user",verifyToken,userRouter);
+app.use("/api/v1/event",verifyToken ,eventRouter);
 app.use(errorMiddleHandle);
 
 connectDB();
