@@ -1,12 +1,12 @@
 const EventModel = require("../models/eventModel");
 
+
 const addNewEvent = async (eventData) => {
     try {
         const newEvent = new EventModel(eventData);
         await newEvent.save();
         return newEvent;
     } catch (error) {
-        
         throw new Error("Can not add new event");
     }
 };

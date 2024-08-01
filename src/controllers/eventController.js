@@ -1,4 +1,5 @@
 const { addNewEvent, getAllEvent } = require("../service/EventService");
+const asyncHandle = require("express-async-handler");
 
 const createNewEvent = asyncHandle(async (req, res) => {
   const userData = req.body;
